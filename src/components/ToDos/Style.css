@@ -1,0 +1,96 @@
+.icon {
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.close-icon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.resp-table {
+  width: 100%;
+  display: table;
+}
+
+.resp-table-caption {
+  display: table-caption;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: greenyellow;
+  width: 100%;
+  display: table;
+}
+
+.resp-table-header {
+  display: table-header-group;
+  background-color: gray;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.table-header-cell {
+  display: table-cell;
+  /* padding: 10px; */
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+.table-header-cell-action {
+  display: table-cell;
+  /* padding: 10px; */
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.resp-table-body {
+  display: table-row-group;
+}
+
+.resp-table-row {
+  display: table-row;
+}
+
+.table-body-cell {
+  display: table-cell;
+  text-align: left;
+  /* padding: 10px; */
+  border-bottom: 1px solid #ccc;
+}
+
+.table-body-cell-non {
+  display: table-cell;
+  text-align: left;
+  padding: 10px;
+}
+
+.input {
+  display: flex;
+  width: 90%;
+  position: relative;
+  align-items: Center;
+}
+
+.title {
+  padding-left: 30px;
+  padding-right: 5px;
+}
+
+.save-button {
+  border-radius: 100px;
+  background-color: rgb(27 177 34);
+  cursor: pointer;
+  height: 30px;
+  width: 50px;
+}
+
+.save {
+  color: green;
+}
+
+.devElement-Display-hide {
+  display: None;
+}
