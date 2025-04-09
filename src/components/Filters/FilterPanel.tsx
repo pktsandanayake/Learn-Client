@@ -4,6 +4,7 @@ import SearchTextFilter from "./SearchTextFilter";
 import { valuePair } from "@/src/Interfaces/valuePair";
 import PRIORITY from "../../Enums/Priority";
 import STATUS from "../../Enums/Status";
+import React from "react";
 interface prop {
   setPriority: React.Dispatch<React.SetStateAction<string>>;
   setStatus: React.Dispatch<React.SetStateAction<string>>;
@@ -51,4 +52,4 @@ const FilterPanel = ({
   );
 };
 
-export default FilterPanel;
+export default React.memo(FilterPanel);
