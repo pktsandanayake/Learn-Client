@@ -21,7 +21,7 @@ const getToDosByFilter = async (
 ) => {
   console.log("Serch function is calling....");
   const titleParam = title ? title : "NoTitle";
-  const days = getDays.getDaysByWeek(interval.type);
+  const days = getDays.getDateListByInterval(interval);
   console.log("Number of days....", days);
 
   return await axios

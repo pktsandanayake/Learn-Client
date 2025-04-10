@@ -1,3 +1,6 @@
+import INTERVAL from "../../../Enums/Interval";
+import { valuePair } from "../../../Interfaces/valuePair";
+
 const getDaysByWeek = (interval: string) => {
   const simple = new Date(
     parseInt(interval.split("-W")[0]),
@@ -13,7 +16,7 @@ const getDaysByWeek = (interval: string) => {
     m: ISOweekStart.getMonth(),
     y: ISOweekStart.getFullYear(),
   };
-  //console.log(ISOweekStart)
+
   const numDaysInMonth = new Date(temp.y, temp.m + 1, 0).getDate();
 
   return Array.from({ length: 7 }, (_) => {
@@ -21,10 +24,38 @@ const getDaysByWeek = (interval: string) => {
       temp.m += 1;
       temp.d = 1;
     }
-    return new Date(temp.y, temp.m, temp.d++).toLocaleDateString();
+    const month = temp.m < 10 ? `0${temp.m}` : temp.m;
+    const day = temp.d++ < 10 ? `0${temp.d}` : temp.d;
+
+    return `${temp.y}-${month}-${day}`;
   });
 };
 
-const getDays = { getDaysByWeek };
+const getAllDaysInMonth = (interval: string) => {
+  const year = parseInt(interval.split("-")[0]);
+  const month = parseInt(interval.split("-")[1]);
+  return Array.from(
+    { length: new Date(year, month, 0).getDate() },
+    (_, i) =>
+      `${year}-${month < 10 ? `0${month}` : month}-${
+        i + 1 < 10 ? `0${i + 1}` : i + 1
+      }`
+  );
+};
+
+const getDateListByInterval = (interval: valuePair): string[] => {
+  switch (interval.type) {
+    case INTERVAL.DATE:
+      return [interval.value];
+    case INTERVAL.WEEK:
+      return getDaysByWeek(interval.value);
+    case INTERVAL.MONTH:
+      return getAllDaysInMonth(interval.value);
+    default:
+      return [INTERVAL.EMPTY];
+  }
+};
+
+const getDays = { getDaysByWeek, getAllDaysInMonth, getDateListByInterval };
 
 export default getDays;

@@ -24,7 +24,8 @@ import FilterPanelDependency from "./components/Filters/FilterPanelDependency";
 import React from "react";
 
 const App = () => {
-  const todosPerPage = 10;
+  console.log("Rendering App.tsx......................");
+  const todosPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageForCompletedToDos, setCurrentPageForCompletedToDos] =
     useState(1);
@@ -203,58 +204,33 @@ const App = () => {
       return;
     }
 
-    const getBody: any = () => {
-      switch (intervalForSave.type) {
-        case "Date":
-          const bodyDate = [
-            {
-              date: intervalForSave.value,
-              priority: priorityForSave,
-              status: STATUS.DONE,
-              title: titleForSave,
-            },
-          ];
-          return bodyDate;
+    const body: {
+      date: string;
+      title: string;
+      status: string;
+      priority: string;
+      dependancy: [];
+    }[] = [];
 
-        case "Week":
-          const bodyWeek = [
-            getDays.getDaysByWeek(intervalForSave.value).map((date) =>
-              `{
-              "date": "${date}",
-              "priority": "${priorityForSave}",
-              "status":  ${STATUS.NOTDONE},
-              "title": "${titleForSave}",
-              "dependancy": []
-            }`.trim()
-            ),
-          ];
-          return bodyWeek;
-
-        case "Month":
-          const bodyMonth = [
-            getDays.getDaysByWeek(intervalForSave.value).map((e) =>
-              `{
-          "date": "",
-          "priority": "${priorityForSave}",
-          "status": ${STATUS.NOTDONE},
-          "title": "${titleForSave}",
-          "dependancy": []
-        }`.trim()
-            ),
-          ];
-          return bodyMonth;
-      }
-    };
-
-    console.log("Body : ", getBody());
+    getDays.getDateListByInterval(intervalForSave).map((date: any) =>
+      body.push({
+        date: date,
+        title: titleForSave,
+        status: STATUS.NOTDONE,
+        priority: priorityForSave,
+        dependancy: [],
+      })
+    );
+    console.log("Body : ", body);
 
     api
-      .saveTodos(getBody())
+      .saveTodos(body)
       .then((e) => {
-        setTitleForSave("");
+        setTitleForSave(STRING.EMPTY);
         loadFilteredDoDos();
         setStatus(STATUS.NOTDONE);
         setRecordSave(true);
+
         console.log("Data saved", e);
       })
       .catch((error) => console.log(error));
