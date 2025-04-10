@@ -52,4 +52,4 @@ const CreateToDos = ({
   );
 };
 
-export default CreateToDos;
+export default React.memo(CreateToDos);

@@ -1,8 +1,10 @@
+import INTERVAL from "../../../Enums/Interval";
+
 const getCurrentDateString = () => {
   const day =
-    new Date().getMonth() + 1 < 10
-      ? `0${new Date().getDay()}`
-      : `${new Date().getDay()}`;
+    new Date().getDate() + 1 < 10
+      ? `0${new Date().getDate()}`
+      : `${new Date().getDate()}`;
 
   const month =
     new Date().getMonth() + 1 < 10
@@ -32,10 +34,24 @@ const getCurrentMonthString = () => {
   return `${new Date().getFullYear()}-${month}`;
 };
 
+const getDateByIntervalType = (interval: string) => {
+  switch (interval) {
+    case INTERVAL.DATE:
+      return DateFormating.getCurrentDateString();
+    case INTERVAL.WEEK:
+      return DateFormating.getCurrentWeekString();
+    case INTERVAL.MONTH:
+      return DateFormating.getCurrentMonthString();
+    default:
+      return INTERVAL.EMPTY;
+  }
+};
+
 const DateFormating = {
   getCurrentDateString,
   getCurrentWeekString,
   getCurrentMonthString,
+  getDateByIntervalType,
 };
 
 export default DateFormating;

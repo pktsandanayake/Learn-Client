@@ -4,6 +4,7 @@ import "../Filters/Images/edit.png";
 import "../ToDos/Style.css";
 import { dependency } from "@/src/Interfaces/dependency";
 import { ItemRemove } from "../Filters/helpers/ArrayManipulations";
+import React from "react";
 
 interface props {
   todos: todo[];
@@ -79,4 +80,4 @@ const DependencyToDoList = ({ todos, setDependencies, onClose }: props) => {
   );
 };
 
-export default DependencyToDoList;
+export default React.memo(DependencyToDoList);

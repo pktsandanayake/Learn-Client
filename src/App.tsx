@@ -21,6 +21,7 @@ import debounce from "lodash/debounce";
 import STRING from "./Enums/String";
 import PRIORITY from "./Enums/Priority";
 import FilterPanelDependency from "./components/Filters/FilterPanelDependency";
+import React from "react";
 
 const App = () => {
   const todosPerPage = 10;
@@ -471,4 +472,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default React.memo(App);

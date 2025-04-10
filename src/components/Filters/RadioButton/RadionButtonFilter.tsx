@@ -6,9 +6,14 @@ interface prop {
   setFunction: React.Dispatch<React.SetStateAction<string>>;
 }
 const RadionButtonFilter = ({ buttonsProperty, setFunction }: prop) => {
-  console.log("Rendering", buttonsProperty[0].value);
-  console.log(buttonsProperty[1]);
   const [selectedValue, setSelectedValue] = useState(buttonsProperty[0].value);
+
+  console.log(
+    "Rendering",
+    buttonsProperty[0].value,
+    "Selected Value :.....",
+    selectedValue
+  );
 
   useEffect(() => {
     setFunction(selectedValue);

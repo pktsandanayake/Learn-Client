@@ -9,14 +9,9 @@ interface prop {
 }
 const CalendarFilter = ({ setFunction }: prop) => {
   const [intervalType, setInterval] = useState<string>(INTERVAL.DATE);
-  const dateValeString =
-    intervalType == INTERVAL.DATE
-      ? DateFormating.getCurrentDateString()
-      : intervalType == INTERVAL.WEEK
-      ? DateFormating.getCurrentWeekString()
-      : intervalType == INTERVAL.MONTH
-      ? DateFormating.getCurrentMonthString()
-      : INTERVAL.EMPTY;
+
+  const dateValeString = DateFormating.getDateByIntervalType(intervalType);
+
   const [formattedDatePart, setFormattedDatePart] =
     useState<string>(dateValeString);
 

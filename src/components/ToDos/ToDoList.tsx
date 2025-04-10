@@ -1,3 +1,4 @@
+import React from "react";
 import { todo } from "../../Interfaces/todo";
 import "../Filters/Images/edit.png";
 import "../ToDos/Style.css";
@@ -63,4 +64,4 @@ const ToDoList = ({ todos, editToDo, deleteDoTo, doneDoTo }: props) => {
   );
 };
 
-export default ToDoList;
+export default React.memo(ToDoList);
