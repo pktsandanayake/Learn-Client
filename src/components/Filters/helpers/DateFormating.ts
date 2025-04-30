@@ -2,7 +2,7 @@ import INTERVAL from "../../../Enums/Interval";
 
 const getCurrentDateString = () => {
   const day =
-    new Date().getDate() < 10
+    new Date().getDate() + 1 < 10
       ? `0${new Date().getDate()}`
       : `${new Date().getDate()}`;
 
@@ -19,7 +19,7 @@ const getCurrentWeekString = () => {
     let yearstart = +new Date(d.getFullYear(), 0, 1);
     let today = +new Date(d.getFullYear(), d.getMonth(), d.getDate());
     let dayOfYear = (today - yearstart + 1) / 86400000;
-    return Math.ceil(dayOfYear / 7) + 1;
+    return Math.ceil(dayOfYear / 7);
   };
 
   return `${new Date().getFullYear()}-W${weekNumber()}`;
