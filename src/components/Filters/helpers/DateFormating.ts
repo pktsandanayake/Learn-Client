@@ -2,7 +2,7 @@ import INTERVAL from "../../../Enums/Interval";
 
 const getCurrentDateString = () => {
   const day =
-    new Date().getDate() + 1 < 10
+    new Date().getDate() < 10
       ? `0${new Date().getDate()}`
       : `${new Date().getDate()}`;
 

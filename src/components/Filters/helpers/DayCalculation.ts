@@ -24,8 +24,9 @@ const getDaysByWeek = (interval: string) => {
       temp.m += 1;
       temp.d = 1;
     }
-    const month = temp.m < 10 ? `0${temp.m}` : temp.m;
-    const day = temp.d++ < 10 ? `0${temp.d}` : temp.d;
+    const month = temp.m < 10 ? `0${temp.m}` : `${temp.m}`;
+    temp.d++;
+    const day = temp.d < 10 ? `0${temp.d}` : `${temp.d}`;
 
     return `${temp.y}-${month}-${day}`;
   });
@@ -37,7 +38,7 @@ const getAllDaysInMonth = (interval: string) => {
   return Array.from(
     { length: new Date(year, month, 0).getDate() },
     (_, i) =>
-      `${year}-${month < 10 ? `0${month}` : month}-${
+      `${year}-${month < 10 ? `0${month}` : `${month}`}-${
         i + 1 < 10 ? `0${i + 1}` : i + 1
       }`
   );
