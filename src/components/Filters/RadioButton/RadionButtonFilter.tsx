@@ -4,9 +4,16 @@ import "./Style.css";
 interface prop {
   buttonsProperty: radiobuttons[];
   setFunction: React.Dispatch<React.SetStateAction<string>>;
+  defaultValue: number;
 }
-const RadionButtonFilter = ({ buttonsProperty, setFunction }: prop) => {
-  const [selectedValue, setSelectedValue] = useState(buttonsProperty[0].value);
+const RadionButtonFilter = ({
+  buttonsProperty,
+  setFunction,
+  defaultValue,
+}: prop) => {
+  const [selectedValue, setSelectedValue] = useState(
+    buttonsProperty[defaultValue].value
+  );
 
   console.log(
     "Rendering",

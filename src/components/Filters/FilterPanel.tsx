@@ -28,6 +28,7 @@ const FilterPanel = ({
               { label: PRIORITY.MEDIUM, value: PRIORITY.MEDIUM },
               { label: PRIORITY.LOW, value: PRIORITY.LOW },
             ]}
+            defaultValue={0}
           />
         </div>
         <div className="table-body-cell">
@@ -37,6 +38,7 @@ const FilterPanel = ({
               { label: STATUS.DONELABEL, value: STATUS.DONE },
               { label: STATUS.NOTDONELABEL, value: STATUS.NOTDONE },
             ]}
+            defaultValue={0}
           />
         </div>
 

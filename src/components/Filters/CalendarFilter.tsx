@@ -8,7 +8,7 @@ interface prop {
   setFunction: React.Dispatch<React.SetStateAction<valuePair>>;
 }
 const CalendarFilter = ({ setFunction }: prop) => {
-  const [intervalType, setInterval] = useState<string>(INTERVAL.DATE);
+  const [intervalType, setInterval] = useState<string>(INTERVAL.MONTH);
 
   const dateValeString = DateFormating.getDateByIntervalType(intervalType);
 
@@ -30,6 +30,7 @@ const CalendarFilter = ({ setFunction }: prop) => {
             { label: INTERVAL.WEEKLY, value: INTERVAL.WEEK },
             { label: INTERVAL.MONTHLY, value: INTERVAL.MONTH },
           ]}
+          defaultValue={2}
         />
       </div>
       <div className="table-body-cell-non">

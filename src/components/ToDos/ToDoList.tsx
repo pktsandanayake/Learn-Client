@@ -24,8 +24,8 @@ const ToDoList = ({ todos, editToDo, deleteDoTo, doneDoTo }: props) => {
           <div className="table-body-cell"></div>
         </div>
         <div className="resp-table-body">
-          {todos?.map((todo) => (
-            <div className="resp-table-row" key={todo._id}>
+          {todos?.map((todo, index) => (
+            <div className="resp-table-row" key={index}>
               <div className="table-body-cell">{todo.date}</div>
               <div className="table-body-cell">{todo.title}</div>
               <div className="table-body-cell">{todo.status}</div>

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { valuePair } from "../Interfaces/valuePair";
 import getDays from "../components/Filters/helpers/DayCalculation";
+import DateFormating from "../components/Filters/helpers/DateFormating";
+import INTERVAL from "../Enums/Interval";
 
 const ApiBaseUrl = process.env.REACT_APP_ApiBaseUrl;
 
@@ -22,10 +24,24 @@ const getToDosByFilter = async (
   console.log("Serch function is calling....");
   const titleParam = title ? title : "NoTitle";
   const days = getDays.getDateListByInterval(interval);
-  console.log("Number of days....", days);
+  let startDate = "";
+  let endtDate = "";
+  if (days.length == 0 || days[0] == INTERVAL.EMPTY) return;
+  if (days.length == 1) {
+    startDate = days[0];
+    const dp = days[0].split("-");
+    const day = new Date(parseInt(dp[0]), parseInt(dp[1]), parseInt(dp[2]));
+    endtDate = DateFormating.addDays(day, 1);
+  } else {
+    startDate = days[0];
+    endtDate = days[days.length - 1];
+  }
 
   return await axios
-    .get(`${ApiBaseUrl}/todos/filter/${priority}/${status}/${titleParam}`)
+
+    .get(
+      `${ApiBaseUrl}/todos/filter/${priority}/${status}/${titleParam}/${startDate}/${endtDate}`
+    )
     .then((data) => {
       return data.data;
     })
@@ -42,23 +58,6 @@ const getToDosByDependency = async (e: any) => {
 };
 
 const saveTodos = async (body: any) => {
-  // const Tbody = [
-  //   {
-  //     date: "2025-03-31",
-  //     title: "Grass cutting - Last day-Testing...bulk insertion",
-  //     status: "NotDone",
-  //     priority: "Medium",
-  //     dependancy: [],
-  //   },
-  //   {
-  //     date: "2025-03-31",
-  //     title: "Grass cutting - Last day-Testing...",
-  //     status: "NotDone",
-  //     priority: "Low",
-  //     dependancy: [],
-  //   },
-  // ];
-
   return await axios
     .post(`${ApiBaseUrl}/todos`, body, {
       headers: {

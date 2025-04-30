@@ -26,6 +26,7 @@ const FilterPanelDependency = ({
               { label: PRIORITY.MEDIUM, value: PRIORITY.MEDIUM },
               { label: PRIORITY.LOW, value: PRIORITY.LOW },
             ]}
+            defaultValue={0}
           />
         </div>
 

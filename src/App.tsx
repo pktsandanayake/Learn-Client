@@ -311,6 +311,7 @@ const App = () => {
                     { label: "Medium", value: "Medium" },
                     { label: "Low", value: "Low" },
                   ]}
+                  defaultValue={0}
                 />
               </div>
               <div className="table-body-cell-non">
@@ -320,6 +321,7 @@ const App = () => {
                     { label: "Done", value: "Done" },
                     { label: "Not done", value: "NotDone" },
                   ]}
+                  defaultValue={0}
                 />
               </div>
 
@@ -392,7 +394,7 @@ const App = () => {
           setSearchText={setSearchTextCompleted}
         />
         <DependencyToDoList
-          todos={completedToDos.slice(
+          todos={completedToDos?.slice(
             currentPageForCompletedToDos * todosPerPage - todosPerPage,
             currentPageForCompletedToDos * todosPerPage
           )}
@@ -401,7 +403,7 @@ const App = () => {
         />
 
         <Pagination
-          totalToDos={completedToDos.length}
+          totalToDos={completedToDos?.length}
           toDosPerPage={todosPerPage}
           setCurrentPage={setCurrentPageForCompletedToDos}
           currentPage={currentPageForCompletedToDos}
@@ -424,7 +426,7 @@ const App = () => {
       />
 
       <ToDoList
-        todos={todos.slice(
+        todos={todos?.slice(
           currentPage * todosPerPage - todosPerPage,
           currentPage * todosPerPage
         )}
@@ -433,7 +435,7 @@ const App = () => {
         doneDoTo={doneDoTo}
       />
       <Pagination
-        totalToDos={todos.length}
+        totalToDos={todos?.length}
         toDosPerPage={todosPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}

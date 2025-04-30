@@ -47,11 +47,24 @@ const getDateByIntervalType = (interval: string) => {
   }
 };
 
+const addDays = (date: Date, days: number) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+
+  const month =
+    result.getMonth() < 10 ? `0${result.getMonth()}` : `${result.getMonth()}`;
+  const day =
+    result.getDate() < 10 ? `0${result.getDate()}` : `${result.getDate()}`;
+
+  return `${result.getFullYear()}-${month}-${day}`;
+};
+
 const DateFormating = {
   getCurrentDateString,
   getCurrentWeekString,
   getCurrentMonthString,
   getDateByIntervalType,
+  addDays,
 };
 
 export default DateFormating;

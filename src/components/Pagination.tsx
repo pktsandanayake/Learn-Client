@@ -14,7 +14,7 @@ const Pagination = ({
   currentPage,
 }: Props) => {
   let pages = [];
-
+  console.log("Pagination is rendering.......");
   for (let i = 1; i <= Math.ceil(totalToDos / toDosPerPage); i++) {
     pages.push(i);
   }
